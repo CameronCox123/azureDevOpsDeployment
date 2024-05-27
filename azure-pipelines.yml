@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureCLI@2
+  displayName: Create resource group
+  inputs:
+    azureSubscription: 'resource-group-creation-service-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 
+      az deployment sub create -l eastus -f create-rg.bicep --parameters rgName=$(Build.BuildId)
+      
+- task: AzureCLI@2
+  displayName: Create web app in resource group
+  inputs:
+    azureSubscription: 'resource-group-creation-service-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 
+      az deployment group create -g $(Build.BuildId) -f webAppDeploymentDemo.bicep --parameters webAppName=1784591298327409817345
