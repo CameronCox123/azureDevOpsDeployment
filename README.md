@@ -16,8 +16,10 @@ We are building from two bicep files and running Azure CLI commands through a .y
 By default, the CLI command in this repo uses the buildID of the pipeline to create the resource group name and web app name.
 
 If you want to change the location or name, simply edit the CLI line below and replace it in the .yml file.
+
       az deployment sub create -l <location> -f create-rg.bicep --parameters rgName=<your-resource-group-name>
 To edit the web app name, edit the CLI line below and replace it in the .yml file. Note, your-resource-group-name MUST be the same in both CLI lines.
+     
       az deployment group create -g <your-resource-group-name> -f webAppDeploymentDemo.bicep --parameters webAppName=<your-web-app-name>
 
 *Tags and Outputs*
