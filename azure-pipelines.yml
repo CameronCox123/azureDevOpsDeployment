@@ -22,3 +22,8 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 
       az deployment group create -g web-app-$(Build.BuildId)-rg -f webAppDeploymentDemo.bicep --parameters webAppName=web-app-for-cam-rg-$(Build.BuildId)
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'github-deployment-artifact'
+    publishLocation: 'Container'
