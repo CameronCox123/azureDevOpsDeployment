@@ -12,7 +12,7 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 
-      az deployment sub create -l eastus -f create-rg.bicep --parameters rgName=$(Build.BuildId)
+      az deployment sub create -l eastus -f create-rg.bicep --parameters rgName=web-app-$(Build.BuildId)-rg
       
 - task: AzureCLI@2
   displayName: Create web app in resource group
@@ -21,4 +21,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 
-      az deployment group create -g $(Build.BuildId) -f webAppDeploymentDemo.bicep --parameters webAppName=$(Build.BuildId)19741837
+      az deployment group create -g $(Build.BuildId) -f webAppDeploymentDemo.bicep --parameters webAppName=web-app-for-cam-rg-$(Build.BuildId)
