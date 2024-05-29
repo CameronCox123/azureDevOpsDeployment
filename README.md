@@ -1,7 +1,7 @@
-#Introduction
+# Introduction
 This repository is intended to be used in conjuncition with Azure DevOps to deploy an Azure Web App and App Service to a newly created Resource Group.
 
-#Build and Test
+# Build and Test
 Firstly make sure you have an Azure Subscription and Azure DevOps account. 
 Create a project in Azure Devops and upload the create-rg.bicep and webAppDeploymentDemo.bicep files to the main repo.
 Copy the azure-pipelines.yml file to a github repo. 
@@ -11,7 +11,7 @@ Select New Pipeline, Github, select the Github repo where the .yml file is locat
 
 This should take a couple minutes to deploy so be patient and check the job status for any errors. 
 
-#Modification
+# Modification
 We are building from two bicep files and running Azure CLI commands through a .yml file on an Azure Pipeline to deploy these resources. 
 By default, the CLI command in this repo uses the buildID of the pipeline to create the resource group name and web app name.
 If you want to change the location or name, simply edit the CLI line below and replace it in the .yml file.
