@@ -21,4 +21,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 
-      az deployment group create -g $(Build.BuildId) -f webAppDeploymentDemo.bicep --parameters webAppName=1784591298327409817345
+      az deployment group create -g $(Build.BuildId) -f webAppDeploymentDemo.bicep --parameters webAppName=$(Build.BuildId)19741837
